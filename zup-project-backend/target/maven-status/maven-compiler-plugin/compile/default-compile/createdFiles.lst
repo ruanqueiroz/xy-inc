@@ -1,0 +1,9 @@
+br\com\zup\ruan\data\ProductListProducer.class
+br\com\zup\ruan\rest\JaxRsActivator.class
+br\com\zup\ruan\rest\ProductResourceRESTService.class
+br\com\zup\ruan\util\Resources.class
+br\com\zup\ruan\data\ProductRepository.class
+br\com\zup\ruan\model\Product_.class
+br\com\zup\ruan\model\Product.class
+br\com\zup\ruan\util\Constants.class
+br\com\zup\ruan\service\ProductRegistration.class

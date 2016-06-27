@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div>
+	<form id="reg" ng-submit="save()">
+		<h2>Adicionar produto</h2>
+		<fieldset>
+			<div>
+				Nome:</br> <input type="text" name="name" id="name"
+					ng-model="product.name" placeholder="Nome do Produto" required
+					autofocus /> <span class="error" ng-show="errors.name">{{errors.name}}</span>
+			</div>
+			<div>
+				Categoria:</br> <input type="text" name="category" id="category"
+					ng-model="product.category" placeholder="Categoria do Produto"
+					required /> <span class="error" ng-show="errors.category">{{errors.category}}</span>
+			</div>
+			<div>
+				Preço:</br> <input type="number"
+					pattern="^\\$?(([1-9](\\d*|\\d{0,2}(,\\d{3})*))|0)(\\.\\d{1,2})?$"
+					name="price" id="price" ng-model="product.price"
+					placeholder="Preço do Produto" required /> <span class="error"
+					ng-show="errors.price">{{errors.price}}</span>
+			</div>
+			<div>
+				Descrição:</br> <input type="text" name="description" id="description"
+					ng-model="product.description" placeholder="Detalhes do Produto"
+					required /> <span class="error" ng-show="errors.description">{{errors.description}}</span>
+			</div>
+
+			<ul ng-hide="!successMessages" class="success">
+				<li ng-repeat="message in successMessages">{{message}}</li>
+			</ul>
+
+			<ul ng-hide="!errorMessages" class="error">
+				<li ng-repeat="message in errorMessages">{{message}}</li>
+			</ul>
+
+			<div>
+				<input type="submit" id="save" value="Salvar" /> <input
+					type="button" ng-click="reset()" name="cancel" id="cancel"
+					value="Cancelar" />
+			</div>
+		</fieldset>
+	</form>
+
+
+	<h2>
+		Todos os Produtos - REST: <a href="rest/products">/rest/products</a>
+	</h2>
+	<em ng-show="products.length == 0">Não há produtos na base de
+		dados.</em>
+	<table ng-hide="products.length == 0" class="simpletablestyle">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Categoria</th>
+				<th>Preço</th>
+				<th>Busca por id (REST URL)</th>
+			</tr>
+		</thead>
+		<tr ng-repeat="product in products | orderBy:orderBy">
+			<td>{{product.id}}</td>
+			<td>{{product.name}}</td>
+			<td>{{product.description}}</td>
+			<td>{{product.category}}</td>
+			<td>{{product.price}}</td>
+			<td><a href="rest/products/{{member.id}}">/rest/products/{{product.id}}</a>
+			</td>
+	</table>
+	<div>
+		Apenas pela api
+		<div>PUT /products - atualiza o produto</div>
+		<div>DELETE /products/{id} - remove o produto</div>
+	</div>
+</div>
